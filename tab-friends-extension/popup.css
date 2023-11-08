@@ -1,0 +1,40 @@
+body {
+    width: 20rem;
+    background: #f8ebcb7e;
+    font-family: monospace, monospace, monospace;
+    margin: 1px;
+  }
+  
+  li {
+    padding: 0.70rem;
+    background: #fde7afb4;
+    border-bottom: 3px solid #702700b4;
+    font-size: 14px;
+
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 15px;
+  }
+
+  .delete-button{
+    background-color: #ff9900;
+    padding: 2px 3px;
+    font-size: 8px;
+    font-weight: bold;
+    position: fixed;
+    right: 25px;
+  }
+
+  #groupList {
+    padding: 10px ;
+    list-style-type: none;
+  }
+
+  #addButton{
+    background-color: #ffcf88;
+    font-family: monospace, monospace, monospace;
+  }
