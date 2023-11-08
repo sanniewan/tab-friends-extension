@@ -1,2 +1,2 @@
 # tab-friends-extension
-This is an extension I created that easily opens up frequently used tab clusters in Chrome with React.
+This is a Chrome extension I created with React that easily opens up frequently used tab clusters.
