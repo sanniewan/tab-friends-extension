@@ -8,6 +8,13 @@ stor.get("groupNumber").then((result) => {
     stor.set({groupNumber: result.groupNumber || 1});
   });
 
+stor.get("groups", function(result) {
+    if (!result.groups) {
+      chrome.storage.sync.set({ groups: [] });
+    }
+  });
+
+
 // Delete button event handler
 function handleDelete(event) {  //event object automatically passed to func when event "click" occurs
     const listItem = event.target.closest("li");  //searches for nearest ancestor <li> element
@@ -32,30 +39,33 @@ function handleDelete(event) {  //event object automatically passed to func when
 
 const button = document.getElementById("addButton");
 button.addEventListener("click", async () => {
-  // const groupName = itemNameInput.value;
-    // if (groupName !== ""){
-        
-    // }
 
-    //Get current number and add 1
-    stor.get("groupNumber").then((result) => {
-        console.log("current key val :" + result.groupNumber);
-        result.groupNumber ++;
-        stor.set({groupNumber: result.groupNumber}).then(() => {
-            console.log("updated key val :" + result.groupNumber);
+    // const groupName = itemNameInput.value;
+    //     if (groupName !== ""){
+    //         const newGroup = "new group " + result.groupNumber; // You can customize group name based on user input
+    //         savedGroups.push(newGroup);  // savedGroups: string array with new group name appended
+    //     }else{
+
+        //Get current number and add 1
+        stor.get("groupNumber").then((result) => {
+            console.log("current key val :" + result.groupNumber);
+            result.groupNumber ++;
+            stor.set({groupNumber: result.groupNumber}).then(() => {
+                console.log("updated key val :" + result.groupNumber);
+            });
         });
-    });
-    //Add the new group name to Saved Groups array
-    stor.get("groupNumber").then((result) => {
-        const newGroup = "new group " + result.groupNumber; // You can customize group name based on user input
-        console.log(newGroup);
-        //Get the current array of groups and append new group
-        stor.get("groups", (result) => {
-            const savedGroups = result.groups;
-            savedGroups.push(newGroup);  // savedGroups: string array with new group name appended
-            updateStorage(savedGroups);
+        //Add the new group name to Saved Groups array
+        stor.get("groupNumber").then((result) => {
+            const newGroup = "new group " + result.groupNumber; // You can customize group name based on user input
+            console.log(newGroup);
+            //Get the current array of groups and append new group
+            stor.get("groups", (result) => {
+                const savedGroups = result.groups;
+                savedGroups.push(newGroup);  // savedGroups: string array with new group name appended
+                updateStorage(savedGroups);
+            });
         });
-    });
+    // }
 });
 
 // Add Group button click event
